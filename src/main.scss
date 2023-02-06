@@ -1,0 +1,185 @@
+:root {
+    --instr-color-open: white;
+    --instr-color-closed: black;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+div {
+    font-size: 2rem;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+
+    span {
+        width: 10rem;
+    }
+}
+
+gt-flute {
+    svg {
+        height: 100px;
+    }
+
+    /*
+    Ignore C and C# flutes for now
+    */
+
+    &.D, &.D2 {
+        .L1A { fill: var(--instr-color-closed); }
+        .L1B { fill: var(--instr-color-closed); }
+        .L2 { fill: var(--instr-color-closed); }
+        .L3 { fill: var(--instr-color-closed); }
+        .L4 { fill: var(--instr-color-closed); }
+        .L5 { fill: var(--instr-color-open); }
+        .R2 { fill: var(--instr-color-closed); }
+        .R3 { fill: var(--instr-color-closed); }
+        .R4 { fill: var(--instr-color-closed); }
+        .R5 { fill: var(--instr-color-open); }
+    }
+
+    &.Ds,&.Ef {
+        .L1A { fill: var(--instr-color-closed); }
+        .L1B { fill: var(--instr-color-closed); }
+        .L2 { fill: var(--instr-color-closed); }
+        .L3 { fill: var(--instr-color-closed); }
+        .L4 { fill: var(--instr-color-closed); }
+        .L5 { fill: var(--instr-color-open); }
+        .R2 { fill: var(--instr-color-closed); }
+        .R3 { fill: var(--instr-color-closed); }
+        .R4 { fill: var(--instr-color-closed); }
+        .R5 { fill: var(--instr-color-closed); }
+    }
+    
+    &.E {
+        .L1A { fill: var(--instr-color-closed); }
+        .L1B { fill: var(--instr-color-closed); }
+        .L2 { fill: var(--instr-color-closed); }
+        .L3 { fill: var(--instr-color-closed); }
+        .L4 { fill: var(--instr-color-closed); }
+        .L5 { fill: var(--instr-color-open); }
+        .R2 { fill: var(--instr-color-closed); }
+        .R3 { fill: var(--instr-color-closed); }
+        .R4 { fill: var(--instr-color-open); }
+        .R5 { fill: var(--instr-color-closed); }
+    }
+        
+    &.F {
+        .L1A { fill: var(--instr-color-closed); }
+        .L1B { fill: var(--instr-color-closed); }
+        .L2 { fill: var(--instr-color-closed); }
+        .L3 { fill: var(--instr-color-closed); }
+        .L4 { fill: var(--instr-color-closed); }
+        .L5 { fill: var(--instr-color-open); }
+        .R2 { fill: var(--instr-color-closed); }
+        .R3 { fill: var(--instr-color-open); }
+        .R4 { fill: var(--instr-color-open); }
+        .R5 { fill: var(--instr-color-closed); }
+    }
+        
+    &.Fs {
+        .L1A { fill: var(--instr-color-closed); }
+        .L1B { fill: var(--instr-color-closed); }
+        .L2 { fill: var(--instr-color-closed); }
+        .L3 { fill: var(--instr-color-closed); }
+        .L4 { fill: var(--instr-color-closed); }
+        .L5 { fill: var(--instr-color-open); }
+        .R2 { fill: var(--instr-color-open); }
+        .R3 { fill: var(--instr-color-open); }
+        .R4 { fill: var(--instr-color-closed); }
+        .R5 { fill: var(--instr-color-closed); }
+    }
+            
+    &.G {
+        .L1A { fill: var(--instr-color-closed); }
+        .L1B { fill: var(--instr-color-closed); }
+        .L2 { fill: var(--instr-color-closed); }
+        .L3 { fill: var(--instr-color-closed); }
+        .L4 { fill: var(--instr-color-closed); }
+        .L5 { fill: var(--instr-color-open); }
+        .R2 { fill: var(--instr-color-open); }
+        .R3 { fill: var(--instr-color-open); }
+        .R4 { fill: var(--instr-color-open); }
+        .R5 { fill: var(--instr-color-closed); }
+    }
+
+    &.Gs {
+        .L1A { fill: var(--instr-color-closed); }
+        .L1B { fill: var(--instr-color-closed); }
+        .L2 { fill: var(--instr-color-closed); }
+        .L3 { fill: var(--instr-color-closed); }
+        .L4 { fill: var(--instr-color-closed); }
+        .L5 { fill: var(--instr-color-closed); }
+        .R2 { fill: var(--instr-color-open); }
+        .R3 { fill: var(--instr-color-open); }
+        .R4 { fill: var(--instr-color-open); }
+        .R5 { fill: var(--instr-color-closed); }
+    }
+
+    &.A {
+        .L1A { fill: var(--instr-color-closed); }
+        .L1B { fill: var(--instr-color-closed); }
+        .L2 { fill: var(--instr-color-closed); }
+        .L3 { fill: var(--instr-color-closed); }
+        .L4 { fill: var(--instr-color-open); }
+        .L5 { fill: var(--instr-color-open); }
+        .R2 { fill: var(--instr-color-open); }
+        .R3 { fill: var(--instr-color-open); }
+        .R4 { fill: var(--instr-color-open); }
+        .R5 { fill: var(--instr-color-closed); }
+    }
+
+    &.As {
+        .L1A { fill: var(--instr-color-closed); }
+        .L1B { fill: var(--instr-color-open); }
+        .L2 { fill: var(--instr-color-closed); }
+        .L3 { fill: var(--instr-color-open); }
+        .L4 { fill: var(--instr-color-open); }
+        .L5 { fill: var(--instr-color-open); }
+        .R2 { fill: var(--instr-color-open); }
+        .R3 { fill: var(--instr-color-open); }
+        .R4 { fill: var(--instr-color-open); }
+        .R5 { fill: var(--instr-color-closed); }
+    }
+
+    &.B {
+        .L1A { fill: var(--instr-color-closed); }
+        .L1B { fill: var(--instr-color-closed); }
+        .L2 { fill: var(--instr-color-closed); }
+        .L3 { fill: var(--instr-color-open); }
+        .L4 { fill: var(--instr-color-open); }
+        .L5 { fill: var(--instr-color-open); }
+        .R2 { fill: var(--instr-color-open); }
+        .R3 { fill: var(--instr-color-open); }
+        .R4 { fill: var(--instr-color-open); }
+        .R5 { fill: var(--instr-color-closed); }
+    }
+
+    &.C2 {
+        .L1A { fill: var(--instr-color-open); }
+        .L1B { fill: var(--instr-color-open); }
+        .L2 { fill: var(--instr-color-closed); }
+        .L3 { fill: var(--instr-color-open); }
+        .L4 { fill: var(--instr-color-open); }
+        .L5 { fill: var(--instr-color-open); }
+        .R2 { fill: var(--instr-color-open); }
+        .R3 { fill: var(--instr-color-open); }
+        .R4 { fill: var(--instr-color-open); }
+        .R5 { fill: var(--instr-color-closed); }
+    }
+
+    &.Cs2 {
+        .L1A { fill: var(--instr-color-open); }
+        .L1B { fill: var(--instr-color-open); }
+        .L2 { fill: var(--instr-color-open); }
+        .L3 { fill: var(--instr-color-open); }
+        .L4 { fill: var(--instr-color-open); }
+        .L5 { fill: var(--instr-color-open); }
+        .R2 { fill: var(--instr-color-open); }
+        .R3 { fill: var(--instr-color-open); }
+        .R4 { fill: var(--instr-color-open); }
+        .R5 { fill: var(--instr-color-closed); }
+    }
+}

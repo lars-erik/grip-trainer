@@ -6,44 +6,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grip Trainer</title>
-
-    <style type="text/css">
-        #Flute {
-            width: 30%;
-        }
-
-        #L1A {
-            fill: black;
-        }
-    </style>
-
 </head>
 
 <body>
-    <h1>Hello world!</h1>
-    <svg version="1.2" baseProfile="tiny" id="Flute" xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 253.8 64" overflow="visible"
-        xml:space="preserve">
-        <rect id="Body" x="8.4" y="24.3" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="234.2"
-            height="18.7" />
-        <path id="Mouthpiece" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M22.8,20.3h42.6c2.8,0,5.1,2.3,5.1,5.1v12.7
-	c0,5.7-4.6,10.3-10.3,10.3H27.9c-5.6,0-10.2-4.6-10.2-10.2V25.4C17.8,22.6,20,20.3,22.8,20.3z" />
-        <ellipse id="Hole" stroke="#000000" stroke-miterlimit="10" cx="43.8" cy="34.4" rx="9.9" ry="6" />
-        <circle id="L1A" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="88.8" cy="43" r="6.9" />
-        <circle id="L2" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="125.1" cy="33.7" r="6.9" />
-        <circle id="L3" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="142.1" cy="33.7" r="6.9" />
-        <circle id="L4" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="159.1" cy="33.7" r="6.9" />
-        <circle id="R2" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="184" cy="33.7" r="6.9" />
-        <circle id="R3" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="201" cy="33.7" r="6.9" />
-        <circle id="R4" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="218" cy="33.7" r="6.9" />
-        <rect id="L1B" x="95.7" y="36.1" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="13.8"
-            height="13.8" />
-        <path id="L5" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M172.2,32.3c0,0-0.4-14-3.6-21.6c-3.1-7.6-8.7-4.4-8.9,0
-	c-0.2,4.4,3.1,4.4,5.1,4.2C167,17.6,169.7,20.5,172.2,32.3z" />
-        <path id="R5" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M237.3,29.9c0,0-0.4,14-3.6,21.6s-8.7,4.4-8.9,0
-	s3.1-4.4,5.1-4.2C232.2,44.6,234.9,41.7,237.3,29.9z" />
-    </svg>
+    <script type="module">
+        import styles from './main.scss?inline';
+        let el = document.createElement("style");
+        el.innerHTML = styles;
+        document.head.append(el);
 
+        class Flute extends HTMLElement {
+            constructor() {
+                super();
+
+                this.innerHTML = `
+                <svg version="1.2" baseProfile="tiny" class="Flute" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 253.8 64" overflow="visible"
+                    xml:space="preserve">
+                    <rect class="Body" x="8.4" y="24.3" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="234.2"
+                        height="18.7" />
+                    <path class="Mouthpiece" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M22.8,20.3h42.6c2.8,0,5.1,2.3,5.1,5.1v12.7
+                c0,5.7-4.6,10.3-10.3,10.3H27.9c-5.6,0-10.2-4.6-10.2-10.2V25.4C17.8,22.6,20,20.3,22.8,20.3z" />
+                    <ellipse class="Hole" stroke="#000000" stroke-miterlimit="10" cx="43.8" cy="34.4" rx="9.9" ry="6" />
+                    <circle class="L1A" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="88.8" cy="43" r="6.9" />
+                    <circle class="L2" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="125.1" cy="33.7" r="6.9" />
+                    <circle class="L3" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="142.1" cy="33.7" r="6.9" />
+                    <circle class="L4" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="159.1" cy="33.7" r="6.9" />
+                    <circle class="R2" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="184" cy="33.7" r="6.9" />
+                    <circle class="R3" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="201" cy="33.7" r="6.9" />
+                    <circle class="R4" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="218" cy="33.7" r="6.9" />
+                    <rect class="L1B" x="95.7" y="36.1" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="13.8"
+                        height="13.8" />
+                    <path class="L5" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M172.2,32.3c0,0-0.4-14-3.6-21.6c-3.1-7.6-8.7-4.4-8.9,0
+                c-0.2,4.4,3.1,4.4,5.1,4.2C167,17.6,169.7,20.5,172.2,32.3z" />
+                    <path class="R5" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M237.3,29.9c0,0-0.4,14-3.6,21.6s-8.7,4.4-8.9,0
+                s3.1-4.4,5.1-4.2C232.2,44.6,234.9,41.7,237.3,29.9z" />
+                </svg>
+                `;
+            }
+        }
+
+        customElements.define("gt-flute", Flute);
+    </script>
+
+    <h1>Fløytegrep</h1>
+    <div><span>D1: </span><gt-flute class="D"></gt-flute></div>
+    <div><span>D#1,Eb1: </span><gt-flute class="Ds"></gt-flute></div>
+    <div><span>E1: </span><gt-flute class="E"></gt-flute></div>
+    <div><span>F1: </span><gt-flute class="F"></gt-flute></div>
+    <div><span>F#1,Gb1: </span><gt-flute class="Fs"></gt-flute></div>
+    <div><span>G1: </span><gt-flute class="G"></gt-flute></div>
+    <div><span>G#1,Ab1: </span><gt-flute class="Gs"></gt-flute></div>
+    <div><span>A1: </span><gt-flute class="A"></gt-flute></div>
+    <div><span>A#1,Bb1: </span><gt-flute class="As"></gt-flute></div>
+    <div><span>B1: </span><gt-flute class="B"></gt-flute></div>
+    <div><span>C2: </span><gt-flute class="C2"></gt-flute></div>
+    <div><span>C#2,Db2: </span><gt-flute class="Cs2"></gt-flute></div>
+    <div><span>D2: </span><gt-flute class="D2"></gt-flute></div>
 </body>
 
 </html>
