@@ -67,8 +67,9 @@ const newQuestion = () => {
     const deck = grips.slice();
     deck.splice(deck.indexOf(q), 1);
     const options = [q]
-        .concat(deck.splice(randIndex(deck)))
-        .concat(deck.splice(randIndex(deck)));
+        .concat(deck.splice(randIndex(deck), 1))
+        .concat(deck.splice(randIndex(deck), 1));
+    options.sort(() => Math.random() * 2 - 1);
 
     optionEls[0].className = options[0];
     optionEls[1].className = options[1];
