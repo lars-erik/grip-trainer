@@ -600,8 +600,8 @@ const it = () => {
   I = !1, T.className = "", M = z(y), h = y[M], Vt.innerHTML = h;
   const r = y.slice();
   r.splice(r.indexOf(h), 1);
-  const t = [h].concat(r.splice(z(r))).concat(r.splice(z(r)));
-  N[0].className = t[0], N[1].className = t[1], N[2].className = t[2];
+  const t = [h].concat(r.splice(z(r), 1)).concat(r.splice(z(r), 1));
+  t.sort(() => Math.random() * 2 - 1), N[0].className = t[0], N[1].className = t[1], N[2].className = t[2];
 };
 window.checkAnswer = (r) => {
   I || (console.log(r, h), r.className == h ? (I = !0, T.className = "correct", setTimeout(it, 2e3)) : T.className = "wrong");
