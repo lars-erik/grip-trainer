@@ -12,20 +12,50 @@
 <body>
     
 
-    <h1>Fløytegrep</h1>
-    <div><span>D1: </span><gt-flute class="D"></gt-flute></div>
-    <div><span>D#1,Eb1: </span><gt-flute class="Ds"></gt-flute></div>
-    <div><span>E1: </span><gt-flute class="E"></gt-flute></div>
-    <div><span>F1: </span><gt-flute class="F"></gt-flute></div>
-    <div><span>F#1,Gb1: </span><gt-flute class="Fs"></gt-flute></div>
-    <div><span>G1: </span><gt-flute class="G"></gt-flute></div>
-    <div><span>G#1,Ab1: </span><gt-flute class="Gs"></gt-flute></div>
-    <div><span>A1: </span><gt-flute class="A"></gt-flute></div>
-    <div><span>A#1,Bb1: </span><gt-flute class="As"></gt-flute></div>
-    <div><span>B1: </span><gt-flute class="B"></gt-flute></div>
-    <div><span>C2: </span><gt-flute class="C2"></gt-flute></div>
-    <div><span>C#2,Db2: </span><gt-flute class="Cs2"></gt-flute></div>
-    <div><span>D2: </span><gt-flute class="D2"></gt-flute></div>
+    <div class="container">
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="grep-tab" data-bs-toggle="tab" data-bs-target="#grep-tab-pane"
+                    type="button" role="tab" aria-controls="grep-tab-pane" aria-selected="true">Grep</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="spill-tab" data-bs-toggle="tab" data-bs-target="#spill-tab-pane"
+                    type="button" role="tab" aria-controls="spill-tab-pane" aria-selected="false">Spill</button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="tabs">
+            <div class="tab-pane fade show active" id="grep-tab-pane" role="tabpanel" aria-labelledby="grep-tab"
+                tabindex="0">
+                <h1>Fløytegrep</h1>
+                <div class="grip-table">
+                    <div><span>D1: </span><gt-flute class="D"></gt-flute></div>
+                    <div><span>D#1,Eb1: </span><gt-flute class="Ds"></gt-flute></div>
+                    <div><span>E1: </span><gt-flute class="E"></gt-flute></div>
+                    <div><span>F1: </span><gt-flute class="F"></gt-flute></div>
+                    <div><span>F#1,Gb1: </span><gt-flute class="Fs"></gt-flute></div>
+                    <div><span>G1: </span><gt-flute class="G"></gt-flute></div>
+                    <div><span>G#1,Ab1: </span><gt-flute class="Gs"></gt-flute></div>
+                    <div><span>A1: </span><gt-flute class="A"></gt-flute></div>
+                    <div><span>A#1,Bb1: </span><gt-flute class="As"></gt-flute></div>
+                    <div><span>B1: </span><gt-flute class="B"></gt-flute></div>
+                    <div><span>C2: </span><gt-flute class="C2"></gt-flute></div>
+                    <div><span>C#2,Db2: </span><gt-flute class="Cs2"></gt-flute></div>
+                    <div><span>D2: </span><gt-flute class="D2"></gt-flute></div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="spill-tab-pane" role="tabpanel" aria-labelledby="spill-tab" tabindex="0">
+                <h1 id="answer"></h1>
+                <h1 class="question" id="question"></h1>
+                <div class="options">
+                    <div class="option"><gt-flute id="optionA" onclick="checkAnswer(this)"></gt-flute></div>
+                    <div class="option"><gt-flute id="optionB" onclick="checkAnswer(this)"></gt-flute></div>
+                    <div class="option"><gt-flute id="optionC" onclick="checkAnswer(this)"></gt-flute></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
