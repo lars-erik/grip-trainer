@@ -3,11 +3,18 @@
     --instr-color-closed: black;
 }
 
+@import "./node_modules/bootstrap/scss/bootstrap.scss";
+
 body {
     font-family: sans-serif;
+    margin-top: 1.5rem;
 }
 
-div {
+#tabs {
+    padding: 1.5rem;
+}
+
+.grip-table div {
     font-size: 2rem;
     font-weight: bolder;
     display: flex;
@@ -40,7 +47,7 @@ gt-flute {
         .R5 { fill: var(--instr-color-open); }
     }
 
-    &.Ds,&.Ef {
+    &.Ds,&.Eb {
         .L1A { fill: var(--instr-color-closed); }
         .L1B { fill: var(--instr-color-closed); }
         .L2 { fill: var(--instr-color-closed); }
@@ -79,7 +86,7 @@ gt-flute {
         .R5 { fill: var(--instr-color-closed); }
     }
         
-    &.Fs {
+    &.Fs, &.Gb {
         .L1A { fill: var(--instr-color-closed); }
         .L1B { fill: var(--instr-color-closed); }
         .L2 { fill: var(--instr-color-closed); }
@@ -105,7 +112,7 @@ gt-flute {
         .R5 { fill: var(--instr-color-closed); }
     }
 
-    &.Gs {
+    &.Gs, &.Ab {
         .L1A { fill: var(--instr-color-closed); }
         .L1B { fill: var(--instr-color-closed); }
         .L2 { fill: var(--instr-color-closed); }
@@ -131,7 +138,7 @@ gt-flute {
         .R5 { fill: var(--instr-color-closed); }
     }
 
-    &.As {
+    &.As, &.Bb {
         .L1A { fill: var(--instr-color-closed); }
         .L1B { fill: var(--instr-color-open); }
         .L2 { fill: var(--instr-color-closed); }
@@ -170,7 +177,7 @@ gt-flute {
         .R5 { fill: var(--instr-color-closed); }
     }
 
-    &.Cs2 {
+    &.Cs2, &.Db2 {
         .L1A { fill: var(--instr-color-open); }
         .L1B { fill: var(--instr-color-open); }
         .L2 { fill: var(--instr-color-open); }
@@ -181,5 +188,21 @@ gt-flute {
         .R3 { fill: var(--instr-color-open); }
         .R4 { fill: var(--instr-color-open); }
         .R5 { fill: var(--instr-color-closed); }
+    }
+}
+
+#answer {
+    &.correct {
+        color: green;
+        &::before {
+            content: '✔'
+        }
+    }
+
+    &.wrong {
+        color: red;
+        &::before {
+            content: '❌'
+        }
     }
 }

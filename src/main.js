@@ -1,4 +1,7 @@
+import "./node_modules/bootstrap/js/src/tab";
+
 import styles from './main.scss?inline';
+
 let el = document.createElement("style");
 el.innerHTML = styles;
 document.head.append(el);
@@ -35,3 +38,55 @@ class Flute extends HTMLElement {
 }
 
 customElements.define("gt-flute", Flute);
+
+const grips = ["D", "Eb", "E", "F", "Gb", "A", "Bb", "B", "C2", "Db2", "D2"];
+
+const answerEl = document.getElementById("answer");
+const qEl = document.getElementById("question");
+const optionEls = [
+    document.getElementById("optionA"),
+    document.getElementById("optionB"),
+    document.getElementById("optionC")
+];
+
+const randIndex = (arr) => Math.floor(Math.random()*arr.length);
+
+let qidx = randIndex(grips);
+let q = grips[qidx];
+let stalling = false;
+
+const newQuestion = () => {
+    stalling = false;
+    answerEl.className = ""
+
+    qidx = randIndex(grips);
+    q = grips[qidx];
+
+    qEl.innerHTML = q;
+
+    const deck = grips.slice();
+    deck.splice(deck.indexOf(q), 1);
+    const options = [q]
+        .concat(deck.splice(randIndex(deck)))
+        .concat(deck.splice(randIndex(deck)));
+
+    optionEls[0].className = options[0];
+    optionEls[1].className = options[1];
+    optionEls[2].className = options[2];
+
+}
+
+window.checkAnswer = (el) => {
+    if (stalling) return;
+
+    console.log(el, q);
+    if (el.className == q) {
+        stalling = true;
+        answerEl.className = "correct";
+        setTimeout(newQuestion, 2000);
+    } else {
+        answerEl.className = "wrong"
+    }
+}
+
+newQuestion();
