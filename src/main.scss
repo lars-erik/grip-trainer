@@ -35,7 +35,7 @@ gt-flute {
     Ignore C and C# flutes for now
     */
 
-    &.D, &.D2 {
+    &.D {
         .L1A { fill: var(--instr-color-closed); }
         .L1B { fill: var(--instr-color-closed); }
         .L2 { fill: var(--instr-color-closed); }
@@ -189,6 +189,19 @@ gt-flute {
         .R3 { fill: var(--instr-color-open); }
         .R4 { fill: var(--instr-color-open); }
         .R5 { fill: var(--instr-color-closed); }
+    }
+    
+    &.D2 {
+        .L1A { fill: var(--instr-color-closed); }
+        .L1B { fill: var(--instr-color-closed); }
+        .L2 { fill: var(--instr-color-open); }
+        .L3 { fill: var(--instr-color-closed); }
+        .L4 { fill: var(--instr-color-closed); }
+        .L5 { fill: var(--instr-color-open); }
+        .R2 { fill: var(--instr-color-closed); }
+        .R3 { fill: var(--instr-color-closed); }
+        .R4 { fill: var(--instr-color-closed); }
+        .R5 { fill: var(--instr-color-open); }
     }
 }
 
