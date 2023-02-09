@@ -10,9 +10,9 @@ class GUI extends HTMLElement {
     current = null;
 
     constructor() {
-        super()
-            .attachShadow({mode: 'open'})
-            .innerHTML = `
+        super();
+        let shadow = this.attachShadow({mode: 'open'});
+        shadow.innerHTML = `
         <slot></slot>
         `;
 
@@ -45,7 +45,7 @@ class GUI extends HTMLElement {
         el.classList.remove("d-none");
 
         if (!evt.detail.noPush) {
-            window.history.pushState([], null, '/' + targetSelector);
+            window.history.pushState([], null, './' + targetSelector);
         }
     }
 
