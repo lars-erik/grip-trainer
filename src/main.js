@@ -39,6 +39,17 @@ class Flute extends HTMLElement {
 
 customElements.define("gt-flute", Flute);
 
+const randIndex = (arr) => Math.floor(Math.random()*arr.length);
+const pickOptions = (arr, q) => {
+    const deck = arr.slice();
+    deck.splice(deck.indexOf(q), 1);
+    const options = [q]
+        .concat(deck.splice(randIndex(deck), 1))
+        .concat(deck.splice(randIndex(deck), 1));
+    options.sort(() => Math.random() * 2 - 1);
+    return options;
+}
+
 const grips = ["D", "Eb", "E", "F", "Gb", "A", "Bb", "B", "C2", "Db2", "D2"];
 
 const answerEl = document.getElementById("answer");
@@ -49,32 +60,20 @@ const optionEls = [
     document.getElementById("optionC")
 ];
 
-const randIndex = (arr) => Math.floor(Math.random()*arr.length);
-
-let qidx = randIndex(grips);
-let q = grips[qidx];
-let stalling = false;
+let q;
+let stalling;
 
 const newQuestion = () => {
     stalling = false;
     answerEl.className = ""
 
-    qidx = randIndex(grips);
-    q = grips[qidx];
+    q = grips[randIndex(grips)];
+    let options = pickOptions(grips, q);
 
     qEl.innerHTML = q;
-
-    const deck = grips.slice();
-    deck.splice(deck.indexOf(q), 1);
-    const options = [q]
-        .concat(deck.splice(randIndex(deck), 1))
-        .concat(deck.splice(randIndex(deck), 1));
-    options.sort(() => Math.random() * 2 - 1);
-
     optionEls[0].className = options[0];
     optionEls[1].className = options[1];
     optionEls[2].className = options[2];
-
 }
 
 window.checkAnswer = (el) => {
