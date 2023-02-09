@@ -649,7 +649,7 @@ class Pt extends HTMLElement {
             <button name="back" type="button" class="btn btn-lg btn-outline-dark">&lt;</button>
         </div>
         <h1 class="mt-5">Fløytegrep</h1>
-        <table class="grip-table col-xl-4 col-lg-4 col-md-6 col-12 mx-auto mt-4">
+        <table class="grip-table col-xxl-4 col-xl-6 col-md-8 col-12 mx-auto mt-4">
             <tr><td>D1:      </td><td><gt-flute class="D"></gt-flute></td></tr>
             <tr><td>D#1,Eb1: </td><td><gt-flute class="Ds"></gt-flute></td></tr>
             <tr><td>E1:      </td><td><gt-flute class="E"></gt-flute></td></tr>
@@ -693,10 +693,12 @@ class Kt extends HTMLElement {
             <span class="question" id="question"></span>
             <span id="answer"></span>
         </h1>
+        <div class="col-xxl-3 col-lg-4 col-md-6 col-sm-9 col-12 mx-auto mt-4">
         <div class="options">
             <div class="option"><gt-flute id="optionA"></gt-flute></div>
             <div class="option"><gt-flute id="optionB"></gt-flute></div>
             <div class="option"><gt-flute id="optionC"></gt-flute></div>
+        </div>
         </div>`, this.querySelector('[name="back"]').addEventListener("click", () => {
       window.history.back();
     }), this.questionElement = this.querySelector("#question"), this.answerElement = this.querySelector("#answer"), this.optionElements = [
