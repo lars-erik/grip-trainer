@@ -11,14 +11,11 @@
 <body class="h-100 py-0 my-0 mx-2">
     <script type="module" src="./main.js"></script>
 
-    <div class="d-flex align-items-center justify-content-center flex-column h-100">
-        <gt-flute class="logo-flute"></gt-flute>
-        <h1 class="mt-2">Grep-trenær'n</h1>
-        <div class="d-grid gap-2 col-xl-2 col-lg-4 col-md-6 col-12 mx-auto mt-4">
-            <button type="button" class="btn btn-lg btn-outline-dark">Spill</button>
-            <button type="button" class="btn btn-lg btn-outline-dark">Greptabell</button>
-        </div>
-    </div>
+    <gt-gui id="app" class="w-100 h-100">
+        <gt-frontpage id="frontpage" class="d-none align-items-center justify-content-center flex-column h-100"></gt-frontpage>
+        <gt-chart id="chart" class="d-none align-items-center justify-content-center flex-column mt-5"></gt-chart>
+        <gt-game id="game" class="d-none align-items-center justify-content-center flex-column mt-5"></gt-game>
+    </gt-gui>
 
 </body>
 

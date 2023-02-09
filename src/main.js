@@ -6,6 +6,105 @@ let el = document.createElement("style");
 el.innerHTML = styles;
 document.head.append(el);
 
+class GUI extends HTMLElement {
+    current = null;
+
+    constructor() {
+        super()
+            .attachShadow({mode: 'open'})
+            .innerHTML = `
+        <slot></slot>
+        `;
+
+        this.addEventListener('navigate', this.navigate);
+        window.addEventListener('popstate', () => this.back());
+
+        this.navigateToHash();
+    }
+
+    hideAll() {
+        Array.from(this.children).forEach(n =>
+            {
+                n.classList.remove("d-flex");
+                n.classList.add("d-none");
+            });
+    }
+
+    navigate(evt) {
+        const target = evt.detail.to;
+        const targetSelector = "#" + target;
+        const el = this.querySelector(targetSelector);
+
+        if (!el) {
+            return;
+        }
+
+        this.hideAll();
+
+        el.classList.add("d-flex");
+        el.classList.remove("d-none");
+
+        if (!evt.detail.noPush) {
+            window.history.pushState([], null, '/' + targetSelector);
+        }
+    }
+
+    navigateToHash() {
+        // TODO: Inform whitch one is first
+        const defaultTarget = this.querySelector("#frontpage");
+        const hashTarget = this.querySelector(window.location.hash || '#nothing');
+
+        this.hideAll();
+
+        if (hashTarget) {
+            this.navigate({detail:{to: hashTarget.id, noPush: true}});
+        } else {
+            this.current = defaultTarget;
+            this.current.classList.add('d-flex');
+            this.current.classList.remove('d-none');
+        }
+    }
+
+    back(evt) {
+        this.navigateToHash();
+    }
+}
+
+customElements.define("gt-gui", GUI);
+
+class Frontpage extends HTMLElement {
+    playButton = null;
+    chartButton = null;
+
+    constructor() {
+        super();
+        this.innerHTML = `
+        <gt-flute class="logo-flute"></gt-flute>
+        <h1 class="mt-2">Grep-trenær'n</h1>
+        <div class="d-grid gap-2 col-xl-2 col-lg-4 col-md-6 col-12 mx-auto mt-4">
+            <button type="button" name="game" class="btn btn-lg btn-outline-dark">Spill</button>
+            <button type="button" name="chart" class="btn btn-lg btn-outline-dark">Greptabell</button>
+        </div>
+        `;
+
+        this.playButton = this.querySelector('[name="game"]');
+        this.chartButton = this.querySelector('[name="chart"]');
+
+        this.playButton.addEventListener('click', this.game);
+        this.chartButton.addEventListener('click', this.chart);
+    }
+
+    game() {
+        this.dispatchEvent(new CustomEvent('navigate', {bubbles: true, detail: { to: 'game' }}));
+    }
+
+    chart() {
+        this.dispatchEvent(new CustomEvent('navigate', {bubbles: true, detail: { to: 'chart' }}));
+    }
+}
+
+customElements.define("gt-frontpage", Frontpage);
+
 class Flute extends HTMLElement {
     constructor() {
         super();
@@ -39,54 +138,119 @@ class Flute extends HTMLElement {
 
 customElements.define("gt-flute", Flute);
 
-const randIndex = (arr) => Math.floor(Math.random()*arr.length);
-const pickOptions = (arr, q) => {
-    const deck = arr.slice();
-    deck.splice(deck.indexOf(q), 1);
-    const options = [q]
-        .concat(deck.splice(randIndex(deck), 1))
-        .concat(deck.splice(randIndex(deck), 1));
-    options.sort(() => Math.random() * 2 - 1);
-    return options;
-}
+class Chart extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `
+        <div class="justify-content-start">
+            <button name="back" type="button" class="btn btn-lg btn-outline-dark">&lt;</button>
+        </div>
+        <h1 class="mt-5">Fløytegrep</h1>
+        <div class="grip-table">
+            <div><span>D1: </span><gt-flute class="D"></gt-flute></div>
+            <div><span>D#1,Eb1: </span><gt-flute class="Ds"></gt-flute></div>
+            <div><span>E1: </span><gt-flute class="E"></gt-flute></div>
+            <div><span>F1: </span><gt-flute class="F"></gt-flute></div>
+            <div><span>F#1,Gb1: </span><gt-flute class="Fs"></gt-flute></div>
+            <div><span>G1: </span><gt-flute class="G"></gt-flute></div>
+            <div><span>G#1,Ab1: </span><gt-flute class="Gs"></gt-flute></div>
+            <div><span>A1: </span><gt-flute class="A"></gt-flute></div>
+            <div><span>A#1,Bb1: </span><gt-flute class="As"></gt-flute></div>
+            <div><span>B1: </span><gt-flute class="B"></gt-flute></div>
+            <div><span>C2: </span><gt-flute class="C2"></gt-flute></div>
+            <div><span>C#2,Db2: </span><gt-flute class="Cs2"></gt-flute></div>
+            <div><span>D2: </span><gt-flute class="D2"></gt-flute></div>
+        </div>`;
 
-const grips = ["D", "Eb", "E", "F", "Gb", "A", "Bb", "B", "C2", "Db2", "D2"];
-
-const answerEl = document.getElementById("answer");
-const qEl = document.getElementById("question");
-const optionEls = [
-    document.getElementById("optionA"),
-    document.getElementById("optionB"),
-    document.getElementById("optionC")
-];
-
-let q;
-let stalling;
-
-const newQuestion = () => {
-    stalling = false;
-    answerEl.className = ""
-
-    q = grips[randIndex(grips)];
-    let options = pickOptions(grips, q);
-
-    qEl.innerHTML = q;
-    optionEls[0].className = options[0];
-    optionEls[1].className = options[1];
-    optionEls[2].className = options[2];
-}
-
-window.checkAnswer = (el) => {
-    if (stalling) return;
-
-    console.log(el, q);
-    if (el.className == q) {
-        stalling = true;
-        answerEl.className = "correct";
-        setTimeout(newQuestion, 2000);
-    } else {
-        answerEl.className = "wrong"
+        this.querySelector('[name="back"]').addEventListener('click', () => {
+            window.history.back();
+        });
     }
 }
 
-newQuestion();
+customElements.define("gt-chart", Chart);
+
+const grips = ["D", "Eb", "E", "F", "Gb", "A", "Bb", "B", "C2", "Db2", "D2"];
+
+class Game extends HTMLElement {
+    questionElement = null;
+    answerElement = null;
+    optionElements = [];
+    currentQuestion = '';
+    stalling = false;
+
+    constructor() {
+        super();
+
+        this.innerHTML = `
+        <div class="justify-content-start">
+            <button name="back" type="button" class="btn btn-lg btn-outline-dark">&lt;</button>
+        </div>
+        <h1 class="mt-5">
+            <span class="question" id="question"></span>
+            <span id="answer"></span>
+        </h1>
+        <div class="options">
+            <div class="option"><gt-flute id="optionA"></gt-flute></div>
+            <div class="option"><gt-flute id="optionB"></gt-flute></div>
+            <div class="option"><gt-flute id="optionC"></gt-flute></div>
+        </div>`;
+
+        this.querySelector('[name="back"]').addEventListener('click', () => {
+            window.history.back();
+        });
+
+        this.questionElement = this.querySelector("#question");
+        this.answerElement = this.querySelector("#answer");
+        this.optionElements = [
+            this.querySelector("#optionA"),
+            this.querySelector("#optionB"),
+            this.querySelector("#optionC")
+        ];
+        this.optionElements.forEach(el => {
+            el.addEventListener('click', () => this.checkAnswer(el));
+        });
+
+        // TODO: Level selection and some game state (?)
+        this.newQuestion();
+    }
+
+    randIndex = (arr) => Math.floor(Math.random()*arr.length);
+    pickOptions = (arr, q) => {
+        const deck = arr.slice();
+        deck.splice(deck.indexOf(q), 1);
+        const options = [q]
+            .concat(deck.splice(this.randIndex(deck), 1))
+            .concat(deck.splice(this.randIndex(deck), 1));
+        options.sort(() => Math.random() * 2 - 1);
+        return options;
+    }
+
+    newQuestion() {
+        this.stalling = false;
+        this.answerElement.className = ""
+    
+        this.currentQuestion = grips[this.randIndex(grips)];
+        let options = this.pickOptions(grips, this.currentQuestion);
+    
+        this.questionElement.innerHTML = this.currentQuestion;
+        this.optionElements[0].className = options[0];
+        this.optionElements[1].className = options[1];
+        this.optionElements[2].className = options[2];
+    }
+
+    checkAnswer(el) {
+        if (this.stalling) return;
+    
+        console.log(el, this.currentQuestion);
+        if (el.className == this.currentQuestion) {
+            this.stalling = true;
+            this.answerElement.className = "correct";
+            setTimeout(() => this.newQuestion(), 2000);
+        } else {
+            this.answerElement.className = "wrong"
+        }
+    }
+}
+
+customElements.define("gt-game", Game);
