@@ -146,21 +146,21 @@ class Chart extends HTMLElement {
             <button name="back" type="button" class="btn btn-lg btn-outline-dark">&lt;</button>
         </div>
         <h1 class="mt-5">Fløytegrep</h1>
-        <div class="grip-table">
-            <div><span>D1: </span><gt-flute class="D"></gt-flute></div>
-            <div><span>D#1,Eb1: </span><gt-flute class="Ds"></gt-flute></div>
-            <div><span>E1: </span><gt-flute class="E"></gt-flute></div>
-            <div><span>F1: </span><gt-flute class="F"></gt-flute></div>
-            <div><span>F#1,Gb1: </span><gt-flute class="Fs"></gt-flute></div>
-            <div><span>G1: </span><gt-flute class="G"></gt-flute></div>
-            <div><span>G#1,Ab1: </span><gt-flute class="Gs"></gt-flute></div>
-            <div><span>A1: </span><gt-flute class="A"></gt-flute></div>
-            <div><span>A#1,Bb1: </span><gt-flute class="As"></gt-flute></div>
-            <div><span>B1: </span><gt-flute class="B"></gt-flute></div>
-            <div><span>C2: </span><gt-flute class="C2"></gt-flute></div>
-            <div><span>C#2,Db2: </span><gt-flute class="Cs2"></gt-flute></div>
-            <div><span>D2: </span><gt-flute class="D2"></gt-flute></div>
-        </div>`;
+        <table class="grip-table col-xl-4 col-lg-4 col-md-6 col-12 mx-auto mt-4">
+            <tr><td>D1:      </td><td><gt-flute class="D"></gt-flute></td></tr>
+            <tr><td>D#1,Eb1: </td><td><gt-flute class="Ds"></gt-flute></td></tr>
+            <tr><td>E1:      </td><td><gt-flute class="E"></gt-flute></td></tr>
+            <tr><td>F1:      </td><td><gt-flute class="F"></gt-flute></td></tr>
+            <tr><td>F#1,Gb1: </td><td><gt-flute class="Fs"></gt-flute></td></tr>
+            <tr><td>G1:      </td><td><gt-flute class="G"></gt-flute></td></tr>
+            <tr><td>G#1,Ab1: </td><td><gt-flute class="Gs"></gt-flute></td></tr>
+            <tr><td>A1:      </td><td><gt-flute class="A"></gt-flute></td></tr>
+            <tr><td>A#1,Bb1: </td><td><gt-flute class="As"></gt-flute></td></tr>
+            <tr><td>B1:      </td><td><gt-flute class="B"></gt-flute></td></tr>
+            <tr><td>C2:      </td><td><gt-flute class="C2"></gt-flute></td></tr>
+            <tr><td>C#2,Db2: </td><td><gt-flute class="Cs2"></gt-flute></td></tr>
+            <tr><td>D2:      </td><td><gt-flute class="D2"></gt-flute></td></tr>
+        </table>`;
 
         this.querySelector('[name="back"]').addEventListener('click', () => {
             window.history.back();

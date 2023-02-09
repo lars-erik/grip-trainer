@@ -14,21 +14,15 @@ body {
     padding: 1.5rem;
 }
 
-.grip-table div {
-    font-size: 2rem;
+.grip-table td {
+    font-size: 1.5rem;
     font-weight: bolder;
-    display: flex;
-    align-items: center;
-
-    span {
-        width: 10rem;
-        min-width: 10rem;
-    }
 }
 
 gt-flute {
     svg {
-        height: 100px;
+        // height: 100px;
+        width: 100%;
     }
 
     /*
