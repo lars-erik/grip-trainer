@@ -566,11 +566,10 @@ X.innerHTML = $t;
 document.head.append(X);
 class qt extends HTMLElement {
   constructor() {
-    var t = (...args) => {
-      super(...args);
-      m(this, "current", null);
-    };
-    t().attachShadow({ mode: "open" }).innerHTML = `
+    super();
+    m(this, "current", null);
+    let o = this.attachShadow({ mode: "open" });
+    o.innerHTML = `
         <slot></slot>
         `, this.addEventListener("navigate", this.navigate), window.addEventListener("popstate", () => this.back()), this.navigateToHash();
   }
@@ -581,7 +580,7 @@ class qt extends HTMLElement {
   }
   navigate(o) {
     const a = "#" + o.detail.to, i = this.querySelector(a);
-    i && (this.hideAll(), i.classList.add("d-flex"), i.classList.remove("d-none"), o.detail.noPush || window.history.pushState([], null, "/" + a));
+    i && (this.hideAll(), i.classList.add("d-flex"), i.classList.remove("d-none"), o.detail.noPush || window.history.pushState([], null, "./" + a));
   }
   navigateToHash() {
     const o = this.querySelector("#frontpage"), e = this.querySelector(window.location.hash || "#nothing");
