@@ -172,7 +172,7 @@ customElements.define("gt-chart", Chart);
 
 const grips = ["D", "Eb", "E", "F", "Gb", "A", "Bb", "B", "C2", "Db2", "D2"];
 
-class Game extends HTMLElement {
+class GameUI extends HTMLElement {
     questionElement = null;
     answerElement = null;
     optionElements = [];
@@ -255,4 +255,4 @@ class Game extends HTMLElement {
     }
 }
 
-customElements.define("gt-game", Game);
+customElements.define("gt-game", GameUI);

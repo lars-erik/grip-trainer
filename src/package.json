@@ -3,13 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "watch": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "watch-tests": "nodemon --exec \"mocha **/*.spec.js || exit 1\""
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "nodemon": "^2.0.20",
     "sass": "^1.58.0",
     "vite": "^4.1.1"
   },
